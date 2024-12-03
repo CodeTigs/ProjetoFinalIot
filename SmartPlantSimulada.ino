@@ -1,14 +1,14 @@
-#define BLYNK_TEMPLATE_ID "preencher"
-#define BLYNK_TEMPLATE_NAME "preencher"
-#define BLYNK_AUTH_TOKEN "preencher"
+#define BLYNK_TEMPLATE_ID "Preencher"
+#define BLYNK_TEMPLATE_NAME "Preencher"
+#define BLYNK_AUTH_TOKEN "Preencher"
 
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 #include <TimeLib.h>  // Adicionado para manipulação de data e hora
 
 // Definições de configuração do WiFi e Blynk
-char ssid[] = "nome do wifi";
-char pass[] = "senha wife";
+char ssid[] = "Nome wifi";
+char pass[] = "Senha wifi";
 char auth[] = BLYNK_AUTH_TOKEN;
 
 // Pinos dos sensores e atuadores
@@ -43,12 +43,12 @@ void verificaNivelAgua() {
   
 
 
-  if (distanciaAtual > 20 && !alertaReservatorioEnviado) {
+  if (distanciaAtual < 20 && !alertaReservatorioEnviado) {
     Blynk.logEvent("nivel_baixo_reservatorio", "Atenção: O reservatório de água está vazio!");
     alertaReservatorioEnviado = true;
     digitalWrite(PINO_LED_VERMELHO, HIGH); // Acende o LED vermelho
     Serial.println("LED vermelho: Ligado");
-  } else if (distanciaAtual <= 20) {
+  } else if (distanciaAtual >= 20) {
     alertaReservatorioEnviado = false;
     digitalWrite(PINO_LED_VERMELHO, LOW); // Apaga o LED vermelho
     Serial.println("LED vermelho: Desligado");
@@ -157,7 +157,7 @@ void loop() {
   }
 
   // Atualizar os valores no Blynk no início do loop
-  Blynk.virtualWrite(V3, map(distanciaAtual, alturaMaximaReservatorio, 0, 0, 100));
+  Blynk.virtualWrite(V3, map(distanciaAtual, alturaMaximaReservatorio, 0, 0, 50));
   Blynk.virtualWrite(V4, umidadeAtual);
 
   Blynk.run();
