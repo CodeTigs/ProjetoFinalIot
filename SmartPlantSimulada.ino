@@ -1,14 +1,14 @@
-#define BLYNK_TEMPLATE_ID "TMPL2cy54RkjO"
-#define BLYNK_TEMPLATE_NAME "SmartPlant"
-#define BLYNK_AUTH_TOKEN "UvLxwhREaq50C9hXUVXsnB2q73Viscvh"
+#define BLYNK_TEMPLATE_ID "preencher"
+#define BLYNK_TEMPLATE_NAME "preencher"
+#define BLYNK_AUTH_TOKEN "preencher"
 
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 #include <TimeLib.h>  // Adicionado para manipulação de data e hora
 
 // Definições de configuração do WiFi e Blynk
-char ssid[] = "Poligamia";
-char pass[] = "0034731858";
+char ssid[] = "nome do wifi";
+char pass[] = "senha wife";
 char auth[] = BLYNK_AUTH_TOKEN;
 
 // Pinos dos sensores e atuadores
